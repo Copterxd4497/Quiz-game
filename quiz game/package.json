@@ -1,0 +1,12 @@
+{
+  "name": "quiz-game",
+  "version": "1.0.0",
+  "description": "I don't know",
+  "main": "index.ts",
+  "scripts": {
+    "start": "tsc --watch"
+  },
+  "author": "Copter Panyaphon",
+  "license": "ISC",
+  "types": "./index.d.ts"
+}
