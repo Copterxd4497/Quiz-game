@@ -1,15 +1,18 @@
 export const quizQuestions = [
     {
-        question: "Must answer three",
-        answers: ["one", "two", "three", "four"],
+        question: "What is the capital of Thailand",
+        answers: ["Paris", "Madrid", "Moscow", "Bangkok"],
+        valid_choice: "Bangkok",
     },
     {
-        question: "Must answer four",
-        answers: ["one", "two", "three", "four"],
+        question: "What is the color of cloud",
+        answers: ["green", "blue", "black", "white"],
+        valid_choice: "white",
     },
     {
-        question: "Must answer one",
-        answers: ["one", "two", "three", "four"],
+        question: "What is the color of light",
+        answers: ["rainbow", "green", "blue", "red"],
+        valid_choice: "rainbow",
     },
 ];
 //# sourceMappingURL=data.js.map

@@ -1,30 +1,34 @@
-import { quizQuestions } from "./data.js"; // TS file in same folder
-const questions = typeof document !== "undefined"
-    ? document.querySelector(".questions")
-    : null;
-const boxes = document.querySelectorAll(".box button");
-const showScore = typeof document !== "undefined"
-    ? document.querySelector(".showScore")
-    : null;
+import { quizQuestions } from "./data.js";
 document.addEventListener("DOMContentLoaded", () => {
-    quizQuestions.forEach((q, index) => {
-        if (questions)
+    const questions = document.querySelector(".questions");
+    const showScore = document.querySelector(".showScore");
+    const boxes = document.querySelectorAll(".box button");
+    let q;
+    function randomQuestionsAndAnswers() {
+        const randomNum = Math.floor(Math.random() * quizQuestions.length);
+        q = quizQuestions[randomNum]; // Update the 'q' variable
+        if (questions && (q === null || q === void 0 ? void 0 : q.question))
             questions.textContent = q.question;
-        q.answers.forEach((answer, i) => {
-            if (boxes[i])
-                boxes[i].textContent = answer;
+        if (boxes && (q === null || q === void 0 ? void 0 : q.answers)) {
+            boxes.forEach((btn, index) => {
+                // Ensure index is within bounds of answers array
+                btn.textContent = q.answers[index];
+            });
+        }
+    }
+    randomQuestionsAndAnswers();
+    boxes.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            // Use the *current* 'q' to check the answer
+            if (btn.textContent === (q === null || q === void 0 ? void 0 : q.valid_choice)) {
+                alert("This is correct!!");
+            }
+            else {
+                alert("You are wrong!");
+            }
+            // Run function to load the NEXT question after checking
+            randomQuestionsAndAnswers();
         });
-    });
-});
-console.log("Everything alright");
-boxes.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        if ((btn === null || btn === void 0 ? void 0 : btn.textContent) == "answer 1") {
-            console.log("This is correct!!");
-        }
-        else {
-            console.log("You are fucking wrong!");
-        }
     });
 });
 //# sourceMappingURL=index.js.map
